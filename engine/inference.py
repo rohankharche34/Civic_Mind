@@ -180,6 +180,7 @@ class CivicMindInference:
 
     def predict(self, situation: dict) -> dict:
         self.global_counter += 1
+        _ = self.graph  # ensure graph+cache are loaded before CONCEPT/preceded lookups
         ts = pd.Timestamp(situation["timestamp"])
         weather = _forecast_to_weather(
             situation.get("weather_forecast", "clear")
